@@ -2,22 +2,25 @@ import React from 'react';
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { useDispatch } from 'react-redux';
-import { addContact } from 'redux/contacts/contactsSlice';
+import { addContact, fetchContacts } from 'redux/contacts/contactsOperations';
 import { useSelector } from 'react-redux';
+import { selectContacts } from 'redux/contacts/contactsSelectors';
+import { useEffect } from 'react';
 
 export const ContactForm = () => {
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
-
-    const contacts = useSelector(store => store.contacts);
+    const dispatch = useDispatch();
+    const contacts = useSelector(selectContacts);
 
     const handleCangeForm = event => {
         const { name, value } = event.target;
         if (name === 'name') setName(value);
         if (name === 'phone') setPhone(value);
     };
-
-    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(fetchContacts());
+    }, [dispatch]);
 
     const handleFormSubmit = e => {
         e.preventDefault();

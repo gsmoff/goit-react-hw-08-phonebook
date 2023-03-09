@@ -1,15 +1,13 @@
-import { setFilter } from 'redux/contacts/contactsSlice';
+import { filterContact } from 'redux/contacts/contactsAction';
 import { useDispatch } from 'react-redux';
 
 export const Filter = () => {
-
     const dispatch = useDispatch();
 
     const handleFilterChange = event => {
-        dispatch(setFilter(event.target.value));
+        dispatch(filterContact(event.target.value));
         // console.log(event.target.value);
     };
-    
 
     return (
         <input

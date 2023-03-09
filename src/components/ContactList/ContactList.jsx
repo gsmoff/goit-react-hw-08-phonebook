@@ -1,13 +1,14 @@
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/contacts/contactsSlice';
+import { selectContacts, selectFiltr } from 'redux/contacts/contactsSelectors';
+import { deleteContacts } from 'redux/contacts/contactsOperations';
 import { Filter } from '../Filter/Filter';
 
 export const ContactList = () => {
-    const contacts = useSelector(store => store.contacts);
-    // console.log(contacts);
+    const contacts = useSelector(selectContacts);
+    console.log(contacts);
     const dispatch = useDispatch();
-    const filter = useSelector(store => store.filter);
+    const filter = useSelector(selectFiltr);
 
     const filteredContacts = () => {
         if (filter === '') return contacts;
@@ -30,7 +31,7 @@ export const ContactList = () => {
                                 {name}: {phone}{' '}
                                 <button
                                     onClick={() => {
-                                        dispatch(deleteContact(id));
+                                        dispatch(deleteContacts(id));
                                     }}
                                 >
                                     delete
