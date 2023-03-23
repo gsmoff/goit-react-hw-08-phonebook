@@ -6,7 +6,7 @@ import { Filter } from '../Filter/Filter';
 
 export const ContactList = () => {
     const contacts = useSelector(selectContacts);
-    console.log(contacts);
+    // console.log(contacts);
     const dispatch = useDispatch();
     const filter = useSelector(selectFiltr);
 

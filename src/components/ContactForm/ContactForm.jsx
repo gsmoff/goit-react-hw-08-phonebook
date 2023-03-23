@@ -60,7 +60,7 @@ export const ContactForm = () => {
 
     return (
         <>
-            <h2>Phonebook</h2>
+            {/* <h2>Phonebook</h2> */}
             <form onSubmit={handleFormSubmit}>
                 <input
                     type="text"
